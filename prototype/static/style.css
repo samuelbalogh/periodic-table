@@ -1,11 +1,47 @@
+body {
+  font-family: sans-serif;
+}
+
 .container {
   display: grid;
   grid-template-columns: 5%;
-  grid-template-rows: 12%;
   grid-gap: 1px;
 }
 
-.item {
+.element {
   background: #ddd;
   border: 1px solid #ccc;
+  height: 5em;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.5em;
+}
+
+h2 {
+  font-size: .8em;
+  font-weight: normal;
+}
+
+.element-number {
+  font-size: .6em;
+  position: absolute;
+  left: .1em;
+  top: .1em;
+}
+
+.element-symbol {
+  display: block;
+  width: 100%;
 }

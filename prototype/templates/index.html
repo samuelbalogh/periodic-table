@@ -17,12 +17,18 @@
    <div class="container">
       {% for row in periodic_table %}
         {% set outer_loop = loop %}
-          {% for item in row %}
-              {% if item %}
-                <div class="item item-{{item}}"
-                      style="grid-row-start: {{outer_loop.index}}; grid-column-start: {{loop.index}}; grid-column-end: {{loop.index+1}}; ">
-                    Row nr. {{outer_loop.index}}
-                    Element nr. {{item}}
+          {% for element in row %}
+              {% if element %}
+                <div class="element element-{{element}}"
+                      style="grid-row-start: {{outer_loop.index}};
+                             grid-column-start: {{loop.index}};
+                             grid-column-end: {{loop.index+1}};
+                             background: rgb({{255-element}}, {{255-element}}, {{255-element}}) ">
+                    <!-- Row nr. {{outer_loop.index}} -->
+                    <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
+                    <h2 class="element-name">{{data[element]["name"]}}</h2>
+                    <span class="element-number">{{data[element]["number"]}}</span>
+
                 </div>
               {% endif %}
           {% endfor %}
