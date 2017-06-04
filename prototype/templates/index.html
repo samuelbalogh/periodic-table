@@ -13,7 +13,8 @@
  </head>
 
  <body>
-  <h1>The Periodic Table of Elements</h1>
+
+  <h1 class="title">The Periodic Table of Elements</h1>
 
    <div class="container">
      {% for row in periodic_table %}
@@ -24,7 +25,7 @@
                      style="grid-row-start: {{outer_loop.index}};
                             grid-column-start: {{loop.index}};
                             grid-column-end: {{loop.index+1}};
-                            filter: brightness({{150-outer_loop.index*10}}%); ">
+                            filter: brightness({{160-outer_loop.index*10}}%); ">
                    <!-- Row nr. {{outer_loop.index}} -->
                    <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
                    <h2 class="element-name">{{data[element]["name"]}}</h2>
@@ -35,7 +36,6 @@
      {% endfor %}
    </div>
 
-
    <div class="container">
       {% for row in lanthanides_and_actinides %}
         {% set outer_loop = loop %}
@@ -44,7 +44,7 @@
                 style="grid-row-start: {{outer_loop.index}};
                        grid-column-start: {{loop.index+2}};
                        grid-column-end: {{loop.index+3}};
-                       filter: brightness({{320-(element-outer_loop.index)*3}}%);">
+                       filter: brightness({{340-(element-outer_loop.index)*3}}%);">
               <!-- Row nr. {{outer_loop.index}} -->
               <h1 class="element-symbol">{{lanthanides_and_actinides[outer_loop.index0][element]["symbol"]}}</h1>
               <h2 class="element-name">{{lanthanides_and_actinides[outer_loop.index0][element]["name"]}}</h2>
@@ -53,8 +53,6 @@
         {% endfor %}
       {% endfor %}
    </div>
-
-
 
  </body>
 
