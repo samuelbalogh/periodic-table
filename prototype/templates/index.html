@@ -6,7 +6,7 @@
      <title>Periodic Table of Elements</title>
      <meta name="description" content="periodic-table-prototype">
     <link rel="stylesheet" href="static/style.css">
-
+    <script src="static/script.js" type="text/javascript"></script>
      <!--[if lt IE 9]>
        <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
      <![endif]-->
@@ -25,7 +25,8 @@
                      style="grid-row-start: {{outer_loop.index}};
                             grid-column-start: {{loop.index}};
                             grid-column-end: {{loop.index+1}};
-                            filter: brightness({{160-outer_loop.index*10}}%); ">
+                            filter: brightness({{160-outer_loop.index*10}}%);"
+                            onclick="document.getElementById('element-details-{{element}}').style.display = 'block'">
                    <!-- Row nr. {{outer_loop.index}} -->
                    <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
                    <h2 class="element-name">{{data[element]["name"]}}</h2>
@@ -53,6 +54,28 @@
         {% endfor %}
       {% endfor %}
    </div>
+
+
+   {% for row in periodic_table %}
+     {% set outer_loop = loop %}
+     {% for element in row %}
+      {% if element %}
+        <div class="element-details" id="element-details-{{element}}">
+         <div class="element-details-content">
+          <h3>{{data[element]["name"]}}</h3>
+           <ul>
+             <li><h4>Appearance</h4> {{data[element]["appearance"]}}</li>
+             <li><h4>Summary</h4> {{data[element]["summary"]}}</li>
+             <li><h4>Category</h4> {{data[element]["category"]}}</li>
+             <li><h4>Boiling point</h4> {{data[element]["boil"]}}</li>
+             <li><h4>Density</h4> {{data[element]["density"]}}</li>
+             <li><h4>Discovered by</h4> {{data[element]["discovered_by"]}}</li>
+             </ul>
+           </div>
+          </div>
+       {% endif %}
+     {% endfor %}
+   {% endfor %}
 
  </body>
 
