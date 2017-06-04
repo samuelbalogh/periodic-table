@@ -3,13 +3,22 @@ body {
 }
 
 .container {
+  width: 95%;
+  margin: 2em auto;
   display: grid;
-  grid-template-columns: 5%;
+  grid-template-columns: repeat(18, 5.4%);
+  grid-gap: 1px;
+}
+
+.container-lanthinides {
+  width: 95%;
+  margin: 2em auto;
+  display: grid;
+  grid-template-columns: repeat(18, 5.4%);
   grid-gap: 1px;
 }
 
 .element {
-  background: #ddd;
   border: 1px solid #ccc;
   height: 5em;
   text-align: center;
@@ -23,6 +32,7 @@ body {
 h1,
 h2 {
   margin: 0;
+  text-align: center;
 }
 
 h1 {
@@ -44,4 +54,44 @@ h2 {
 .element-symbol {
   display: block;
   width: 100%;
+}
+
+.diatomic-nonmetal {
+  background: rgb(50, 167, 157);
+}
+
+.transition-metal {
+  background: rgb(154, 146, 159);
+}
+
+.metalloid {
+ background: rgb(89, 89, 89);
+}
+
+.noble-gas {
+ background: rgb(182, 250, 244)
+}
+
+.post-transition-metal {
+  background: rgb(105, 105, 105);
+}
+
+.polyatomic-nonmetal {
+  background: rgb(10, 99, 164);
+}
+
+.alkali-metal {
+  background: rgb(169, 178, 195);
+}
+
+.alkaline-earth-metal {
+  background: rgb(224, 201, 210);
+}
+
+.actinide {
+  background: rgba(196, 217, 66, 0.8);
+}
+
+.lanthanide {
+  background: rgb(104, 203, 224);
 }

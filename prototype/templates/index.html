@@ -13,30 +13,48 @@
  </head>
 
  <body>
+  <h1>The Periodic Table of Elements</h1>
 
    <div class="container">
-      {% for row in periodic_table %}
-        {% set outer_loop = loop %}
-          {% for element in row %}
-              {% if element %}
-                <div class="element element-{{element}}"
-                      style="grid-row-start: {{outer_loop.index}};
-                             grid-column-start: {{loop.index}};
-                             grid-column-end: {{loop.index+1}};
-                             background: rgb({{255-element}}, {{255-element}}, {{255-element}}) ">
-                    <!-- Row nr. {{outer_loop.index}} -->
-                    <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
-                    <h2 class="element-name">{{data[element]["name"]}}</h2>
-                    <span class="element-number">{{data[element]["number"]}}</span>
-
-                </div>
-              {% endif %}
-          {% endfor %}
-      {% endfor %}
-
-
-
+     {% for row in periodic_table %}
+       {% set outer_loop = loop %}
+         {% for element in row %}
+             {% if element %}
+               <div class="element element-{{element}} {{'-'.join(data[element]['category'].split())}}"
+                     style="grid-row-start: {{outer_loop.index}};
+                            grid-column-start: {{loop.index}};
+                            grid-column-end: {{loop.index+1}};
+                            filter: brightness({{150-outer_loop.index*10}}%); ">
+                   <!-- Row nr. {{outer_loop.index}} -->
+                   <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
+                   <h2 class="element-name">{{data[element]["name"]}}</h2>
+                   <span class="element-number">{{data[element]["number"]}}</span>
+               </div>
+             {% endif %}
+         {% endfor %}
+     {% endfor %}
    </div>
+
+
+   <div class="container">
+      {% for row in lanthanides_and_actinides %}
+        {% set outer_loop = loop %}
+        {% for element in row %}
+          <div class="element element-{{element}} {{'-'.join(data[element]['category'].split())}}"
+                style="grid-row-start: {{outer_loop.index}};
+                       grid-column-start: {{loop.index+2}};
+                       grid-column-end: {{loop.index+3}};
+                       filter: brightness({{320-(element-outer_loop.index)*3}}%);">
+              <!-- Row nr. {{outer_loop.index}} -->
+              <h1 class="element-symbol">{{lanthanides_and_actinides[outer_loop.index0][element]["symbol"]}}</h1>
+              <h2 class="element-name">{{lanthanides_and_actinides[outer_loop.index0][element]["name"]}}</h2>
+              <span class="element-number">{{lanthanides_and_actinides[outer_loop.index0][element]["number"]}}</span>
+          </div>
+        {% endfor %}
+      {% endfor %}
+   </div>
+
+
 
  </body>
 

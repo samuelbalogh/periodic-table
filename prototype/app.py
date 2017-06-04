@@ -16,6 +16,8 @@ class ElementStore(object):
     def __init__(self):
         self.data = ElementStore.get_element_data_from_file(path_to_json)
         self.elements = self.map_nrs_to_details()
+        self.lanthanides_and_actinides = self.get_lanthanides_and_actinides()
+        self.categories = self.get_categories()
 
     def get_element_by_number(self, number):
         return [item for item in self.data if item['number'] == number].pop()
@@ -29,6 +31,15 @@ class ElementStore(object):
             data = json.load(json_file)
         return data['elements']
 
+    def get_lanthanides_and_actinides(self):
+        return [{element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'lanthanide'},
+                {element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'actinide'}]
+
+
+    def get_categories(self):
+        categories = set([item['category'] for item in self.elements.values()])
+        return categories
+
 
 class PeriodicLayout(object):
     def __init__(self):
@@ -38,13 +49,12 @@ class PeriodicLayout(object):
         PeriodicLayout.insert_lanthanides_and_actinides(periodic_table)
         self.layout = periodic_table
 
+
     @staticmethod
     def valid_row_and_column(row, column):
-        if row in range(3,7):
-            return True
-        elif column in (0,1,12,13,14,15,16,17) and row in (1,2):
-            return True
-        elif column in (0,17) and row == 0:
+        if (row in range(3,7) or
+            column in (0,1,12,13,14,15,16,17) and row in (1,2) or
+            column in (0,17) and row == 0):
             return True
         else:
             return False
@@ -62,7 +72,16 @@ class PeriodicLayout(object):
     def insert_lanthanides_and_actinides(table):
         for row_n, row in enumerate(table):
             for column, item in enumerate(row):
-                if item > 56:
+                if item == 57:
+                    table[row_n][column] = 0
+                if item > 57:
+                    table[row_n][column] = item + 14
+
+        for row_n, row in enumerate(table):
+            for column, item in enumerate(row):
+                if item == 89:
+                    table[row_n][column] = 0
+                if item > 89:
                     table[row_n][column] = item + 14
 
 
@@ -70,10 +89,13 @@ class PeriodicLayout(object):
 def index():
     element_store = ElementStore()
     elements = element_store.elements
+    lanthanides_and_actinides = element_store.lanthanides_and_actinides
     return render_template('index.html',
                             periodic_table=PeriodicLayout().layout,
-                            data=element_store.elements)
+                            data=elements,
+                            lanthanides_and_actinides=lanthanides_and_actinides)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    print(ElementStore().get_categories())
+    app.run(debug=True, use_reloader=False)
