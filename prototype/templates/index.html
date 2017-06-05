@@ -27,7 +27,6 @@
                             grid-column-end: {{loop.index+1}};
                             filter: brightness({{160-outer_loop.index*10}}%);"
                             onclick="document.getElementById('element-details-{{element}}').style.display = 'block'">
-                   <!-- Row nr. {{outer_loop.index}} -->
                    <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
                    <h2 class="element-name">{{data[element]["name"]}}</h2>
                    <span class="element-number">{{data[element]["number"]}}</span>
@@ -45,7 +44,8 @@
                 style="grid-row-start: {{outer_loop.index}};
                        grid-column-start: {{loop.index+2}};
                        grid-column-end: {{loop.index+3}};
-                       filter: brightness({{340-(element-outer_loop.index)*3}}%);">
+                       filter: brightness({{355-(element-outer_loop.index)*3}}%);"
+                       onclick="document.getElementById('element-details-{{element}}').style.display = 'block'">
               <!-- Row nr. {{outer_loop.index}} -->
               <h1 class="element-symbol">{{lanthanides_and_actinides[outer_loop.index0][element]["symbol"]}}</h1>
               <h2 class="element-name">{{lanthanides_and_actinides[outer_loop.index0][element]["name"]}}</h2>
@@ -62,18 +62,41 @@
       {% if element %}
         <div class="element-details" id="element-details-{{element}}">
          <div class="element-details-content">
+          <span class="close-element-details" onclick="close_modals()">&times;</span>
           <h3>{{data[element]["name"]}}</h3>
-           <ul>
-             <li><h4>Appearance</h4> {{data[element]["appearance"]}}</li>
-             <li><h4>Summary</h4> {{data[element]["summary"]}}</li>
-             <li><h4>Category</h4> {{data[element]["category"]}}</li>
-             <li><h4>Boiling point</h4> {{data[element]["boil"]}}</li>
-             <li><h4>Density</h4> {{data[element]["density"]}}</li>
-             <li><h4>Discovered by</h4> {{data[element]["discovered_by"]}}</li>
-             </ul>
+            <dl>
+               <dt>Category</dt> <dd>{{data[element]["category"]}}</dd>
+               <dt>Appearance</dt> <dd>{{data[element]["appearance"]}}</dd>
+               <dt>Summary</dt> <dd>{{data[element]["summary"]}}</dd>
+               <dt>Discovered by</dt> <dd>{{data[element]["discovered_by"]}}</dd>
+               <dt>Melting point</dt> <dd>{{data[element]["melt"]}}&thinsp;K</dd>
+               <dt>Boiling point</dt> <dd>{{data[element]["boil"]}}&thinsp;K</dd>
+               <dt>Density</dt> <dd>{{data[element]["density"]}}&thinsp;g/cm<sup>3</sup></dd>
+            </dl>
            </div>
           </div>
        {% endif %}
+     {% endfor %}
+   {% endfor %}
+
+   {% for row in lanthanides_and_actinides %}
+     {% set outer_loop = loop %}
+     {% for element in row %}
+        <div class="element-details" id="element-details-{{element}}">
+         <div class="element-details-content">
+             <span class="close-element-details" onclick="close_modals()">&times;</span>
+             <h3>{{data[element]["name"]}}</h3>
+               <dl>
+                  <dt>Category</dt> <dd>{{data[element]["category"]}}</dd>
+                  <dt>Appearance</dt> <dd>{{data[element]["appearance"]}}</dd>
+                  <dt>Summary</dt> <dd>{{data[element]["summary"]}}</dd>
+                  <dt>Discovered by</dt> <dd>{{data[element]["discovered_by"]}}</dd>
+                  <dt>Melting point</dt> <dd>{{data[element]["melt"]}}&thinsp;K</dd>
+                  <dt>Boiling point</dt> <dd>{{data[element]["boil"]}}&thinsp;K</dd>
+                  <dt>Density</dt> <dd>{{data[element]["density"]}}&thinsp;g/cm<sup>3</sup></dd>
+               </dl>
+           </div>
+          </div>
      {% endfor %}
    {% endfor %}
 

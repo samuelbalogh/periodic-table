@@ -19,7 +19,12 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  align-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.element:hover {
+  opacity: .85;
 }
 
 .element-details {
@@ -31,20 +36,30 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   z-index: 10; /* Sit on top */
 }
 
 .element-details-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 30px;
+  margin: 5% auto; /* 15% from the top and centered */
+  padding: 20px;
   border: 2px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  width: 30%; /* Could be more or less, depending on screen size */
   border-radius: 10px;
   position: relative;
   z-index: 10; /* Sit on top */
+}
 
+.close-element-details {
+  cursor: pointer;
+  position: relative;
+  float: right;
+  font-size: 2em;
+}
+
+.close-element-details:hover {
+  color: red;
 }
 
 .title {
@@ -58,8 +73,7 @@ a {
 }
 
 h1,
-h2,
-h3 {
+h2 {
   margin: 0;
   text-align: center;
 }
@@ -73,6 +87,31 @@ h2 {
   font-weight: normal;
 }
 
+h3 {
+  font-size: 1.7em;
+}
+
+dl {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+dt {
+  width: 30%;
+  text-align: right;
+  font-weight: 600;
+}
+
+dd {
+  width: 59%;
+  margin-left: 1.5em;
+}
+
+dd,
+dt {
+  margin-top: 1em;
+}
+
 .element-number {
   font-size: .6em;
   position: absolute;
@@ -81,20 +120,26 @@ h2 {
 }
 
 .element-symbol {
-  display: block;
   width: 100%;
+  padding-top: .5em;
+}
+
+.element-name {
+  font-size: .7em;
+  align-self: flex-end;
+  padding-bottom: .3em;
 }
 
 .diatomic-nonmetal {
-  background: rgba(70, 170, 71, 0.82);
+  background: rgba(77, 209, 150, 0.75);
 }
 
 .transition-metal {
-  background: rgb(154, 146, 159);
+  background: rgba(183, 167, 193, 0.84);
 }
 
 .metalloid {
- background: rgba(132, 143, 164, 0.9);
+ background: rgba(159, 165, 176, 0.9);
 }
 
 .noble-gas {
@@ -106,7 +151,7 @@ h2 {
 }
 
 .polyatomic-nonmetal {
-  background: rgb(10, 99, 164);
+  background: rgba(85, 150, 196, 0.94);
 }
 
 .alkali-metal {
@@ -118,9 +163,9 @@ h2 {
 }
 
 .actinide {
-  background: rgba(215, 209, 122, 0.71);
+  background: rgba(230, 226, 168, 0.71);
 }
 
 .lanthanide {
-  background: rgba(66, 147, 199, 0.79);
+  background: rgba(103, 77, 193, 0.79);
 }

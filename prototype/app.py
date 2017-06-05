@@ -16,8 +16,15 @@ class ElementStore(object):
     def __init__(self):
         self.data = ElementStore.get_element_data_from_file(path_to_json)
         self.elements = self.map_nrs_to_details()
+
+        def cut_first_phrase(elements):
+            for number in elements:
+                item = elements[number]
+                item['summary'] = '.'.join(item['summary'].split('.')[1:])
+
+        cut_first_phrase(self.elements)
         self.lanthanides_and_actinides = self.get_lanthanides_and_actinides()
-        self.categories = self.get_categories()
+
 
     def get_element_by_number(self, number):
         return [item for item in self.data if item['number'] == number].pop()
@@ -34,11 +41,6 @@ class ElementStore(object):
     def get_lanthanides_and_actinides(self):
         return [{element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'lanthanide'},
                 {element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'actinide'}]
-
-
-    def get_categories(self):
-        categories = set([item['category'] for item in self.elements.values()])
-        return categories
 
 
 class PeriodicLayout(object):
@@ -97,5 +99,4 @@ def index():
 
 
 if __name__ == '__main__':
-    print(ElementStore().get_categories())
     app.run(debug=True, use_reloader=False)
