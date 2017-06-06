@@ -16,16 +16,14 @@
 
   <h1 class="title">The Periodic Table of Elements</h1>
 
-  <!--
     <div class="category-colors-legend">
     <dl>
       {% for category in categories %}
-        <dt class="category-colors">{{' '.join(category.split('-'))}}:</dt>
-        <dd class="category-colors"><span class="{{category}}"></span></dd>
+        <dt class="category-colors"><span class="{{category}}"></span></dt>
+        <dd class="category-colors">{{' '.join(category.split('-'))}}</dd>
       {% endfor %}
     </dl>
-  </div>
-  -->
+    </div>
 
    <div class="container">
      {% for row in periodic_table %}

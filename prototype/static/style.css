@@ -106,10 +106,6 @@ dt {
   margin-top: 1em;
 }
 
-dd.category-colors,
-dt.category-colors  {
-  margin: 0;
-}
 
 .element-number {
   font-size: .6em;
@@ -129,6 +125,20 @@ dt.category-colors  {
   padding-bottom: .3em;
 }
 
+
+.category-colors-legend {
+  position: absolute;
+  top: 4em;
+  left: -5em;
+}
+
+dd.category-colors,
+dt.category-colors  {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1em;
+}
+
 span.transition-metal,
 span.diatomic-nonmetal,
 span.metalloid,
@@ -140,8 +150,11 @@ span.alkaline-earth-metal,
 span.actinide,
 span.lanthanide {
   display: inline-block;
-  width: 5em;
+  width: 1em;
   height: 1em;
+  margin-right: 1em;
+  filter: brightness(105%);
+
 }
 
 .diatomic-nonmetal {
