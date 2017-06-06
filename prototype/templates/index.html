@@ -16,6 +16,17 @@
 
   <h1 class="title">The Periodic Table of Elements</h1>
 
+  <!--
+    <div class="category-colors-legend">
+    <dl>
+      {% for category in categories %}
+        <dt class="category-colors">{{' '.join(category.split('-'))}}:</dt>
+        <dd class="category-colors"><span class="{{category}}"></span></dd>
+      {% endfor %}
+    </dl>
+  </div>
+  -->
+
    <div class="container">
      {% for row in periodic_table %}
        {% set outer_loop = loop %}
@@ -72,6 +83,7 @@
                <dt>Melting point</dt> <dd>{{data[element]["melt"]}}&thinsp;K</dd>
                <dt>Boiling point</dt> <dd>{{data[element]["boil"]}}&thinsp;K</dd>
                <dt>Density</dt> <dd>{{data[element]["density"]}}&thinsp;g/cm<sup>3</sup></dd>
+                <dt>Read more at: </dt> <dd><a href='{{data[element]["source"]}}' target="_blank">Wikipedia</a></dd>
             </dl>
            </div>
           </div>

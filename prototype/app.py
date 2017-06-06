@@ -6,6 +6,16 @@ app = Flask(__name__)
 
 path_to_json = 'data/PeriodicTableJSON.json'
 
+CATEGORIES = [  "alkali-metal",
+                "alkaline-earth-metal",
+                "transition-metal",
+                "diatomic-nonmetal",
+                "metalloid",
+                "post-transition-metal",
+                "polyatomic-nonmetal",
+                "noble-gas",
+                "actinide",
+                "lanthanide"]
 
 class Element(object):
     def __init__(self, **kwargs):
@@ -95,7 +105,9 @@ def index():
     return render_template('index.html',
                             periodic_table=PeriodicLayout().layout,
                             data=elements,
-                            lanthanides_and_actinides=lanthanides_and_actinides)
+                            lanthanides_and_actinides=lanthanides_and_actinides, categories = CATEGORIES)
+
+
 
 
 if __name__ == '__main__':
