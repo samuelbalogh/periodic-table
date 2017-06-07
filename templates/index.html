@@ -21,7 +21,7 @@
     <dl>
       {% for category in categories %}
         <dt class="category-colors"><span class="{{category}}"></span></dt>
-        <dd class="category-colors">{{' '.join(category.split('-'))}}</dd>
+        <dd class="category-colors" onmouseover="highlight_category(this.innerHTML);" onmouseout="de_highlight_category(this.innerHTML);">{{' '.join(category.split('-'))}}</dd>
       {% endfor %}
     </dl>
     </div>

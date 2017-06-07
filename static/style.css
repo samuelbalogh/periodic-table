@@ -4,12 +4,13 @@ body {
 
 .container,
 .container-lanthinides {
-  width: 95%;
+  width: 92%;
   max-width: 1300px;
   margin: 2em auto;
   display: grid;
   grid-template-columns: repeat(18, 5.4%);
-  grid-gap: 0;
+  grid-column-gap: 3px;
+  grid-row-gap: 4px;
 }
 
 .element {
@@ -129,16 +130,26 @@ dt {
 
 .category-colors-legend {
   position: absolute;
+  width: 17%;
   top: 4em;
-  left: -5em;
+  left: 20em;
 }
 
 dd.category-colors,
 dt.category-colors  {
+  width: 80%;
   margin: 0;
   font-weight: 400;
   font-size: 1em;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
+
+dt.category-colors {
+  width: 20%;
+}
+
+
 
 span.transition-metal,
 span.diatomic-nonmetal,
