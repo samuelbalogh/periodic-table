@@ -42,10 +42,10 @@ body {
 
 .element-details-content {
   background-color: #fefefe;
-  margin: 5% auto; /* 15% from the top and centered */
+  margin: 1% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 2px solid #888;
-  width: 30%; /* Could be more or less, depending on screen size */
+  width: 35%; /* Could be more or less, depending on screen size */
   border-radius: 10px;
   position: relative;
   z-index: 10; /* Sit on top */
@@ -195,4 +195,8 @@ span.lanthanide {
 
 .lanthanide {
   background: rgba(103, 77, 193, 0.79);
+}
+
+img.element-image {
+  width: 70%;
 }

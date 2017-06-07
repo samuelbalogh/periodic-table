@@ -1,1 +1,0 @@
-filter: brightness({{160-outer_loop.index*10}}%);
