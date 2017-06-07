@@ -57,9 +57,9 @@
                        filter: brightness({{355-(element-outer_loop.index)*3}}%);"
                        onclick="document.getElementById('element-details-{{element}}').style.display = 'block'">
               <!-- Row nr. {{outer_loop.index}} -->
-              <h1 class="element-symbol">{{lanthanides_and_actinides[outer_loop.index0][element]["symbol"]}}</h1>
-              <h2 class="element-name">{{lanthanides_and_actinides[outer_loop.index0][element]["name"]}}</h2>
-              <span class="element-number">{{lanthanides_and_actinides[outer_loop.index0][element]["number"]}}</span>
+              <h1 class="element-symbol">{{data[element]["symbol"]}}</h1>
+              <h2 class="element-name">{{data[element]["name"]}}</h2>
+              <span class="element-number">{{data[element]["number"]}}</span>
           </div>
         {% endfor %}
       {% endfor %}

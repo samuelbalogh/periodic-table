@@ -49,8 +49,8 @@ class ElementStore(object):
         return data['elements']
 
     def get_lanthanides_and_actinides(self):
-        return [{element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'lanthanide'},
-                {element[0]: element[1] for element in self.elements.items() if element[1]['category'] == 'actinide'}]
+        return [[element[0] for element in self.elements.items() if element[1]['category'] == 'lanthanide'],
+                [element[0] for element in self.elements.items() if element[1]['category'] == 'actinide']]
 
 
 class PeriodicLayout(object):
