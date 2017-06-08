@@ -14,8 +14,8 @@ CATEGORIES = [  "alkali-metal",
                 "polyatomic-nonmetal",
                 "diatomic-nonmetal",
                 "noble-gas",
-                "actinide",
-                "lanthanide"]
+                "lanthanide",
+                "actinide" ]
 
 class Element(object):
     def __init__(self, **kwargs):
@@ -105,7 +105,8 @@ def index():
     return render_template('index.html',
                             periodic_table=PeriodicLayout().layout,
                             data=elements,
-                            lanthanides_and_actinides=lanthanides_and_actinides, categories = CATEGORIES)
+                            lanthanides_and_actinides=lanthanides_and_actinides,
+                            categories = CATEGORIES)
 
 
 
