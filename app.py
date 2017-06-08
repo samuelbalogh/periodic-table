@@ -9,10 +9,10 @@ path_to_json = 'data/PeriodicTableJSON.json'
 CATEGORIES = [  "alkali-metal",
                 "alkaline-earth-metal",
                 "transition-metal",
-                "diatomic-nonmetal",
-                "metalloid",
                 "post-transition-metal",
+                "metalloid",
                 "polyatomic-nonmetal",
+                "diatomic-nonmetal",
                 "noble-gas",
                 "actinide",
                 "lanthanide"]
