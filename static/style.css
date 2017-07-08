@@ -4,7 +4,7 @@ body {
 
 .container,
 .container-lanthinides {
-  width: 92%;
+  width: 90%;
   max-width: 1300px;
   margin: 2em auto;
   display: grid;
@@ -132,7 +132,7 @@ dt {
   position: absolute;
   width: 17%;
   top: 7%;
-  left: 20%;
+  left: 25%;
 }
 
 dd.category-colors,
