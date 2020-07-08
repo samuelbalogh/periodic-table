@@ -1,4 +1,7 @@
 # A periodic table project
 
-A Heroku-hosted version can be found [here](https://periodic-table-prototype.herokuapp.com/). 
+It is hosted [here](https://periodic-elements.vercel.app/). 
+
+---
+
 ![screenshot](screenshot.png)
